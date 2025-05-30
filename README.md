@@ -21,7 +21,7 @@ The website I am scraping books from [Library Genesis (libgen.rs)](https://libge
 Clone the repository and install it in **editable mode**:
 
 ```bash
-git clone https://github.com/yourusername/lib2ran.git
+git clone https://github.com/ranbir7/Lib2ran.git
 cd lib2ran
 pip install -e .
 ```
@@ -65,19 +65,19 @@ lib2ran -b "The Art of Computer Programming"
 
 ```
 lib2ran/
-├── __main__.py     # Main CLI logic
+├── __init__.py     # required for the tool to run!
+    __main__.py     # Main CLI logic
 setup.py            # Installation script
-README.md           # This file
+README.md           # This file that you are viewing!
 ```
 
 ---
 
 ## 🧠 Future Plans
 
-* [ ] Add fuzzy matching to improve search accuracy
-* [ ] Option to auto-download the top result
-* [ ] Save download history and prevent duplicates
-* [ ] GUI version (Tkinter or Electron)
+* ❤️‍🔥 Add page navigation in terminal!
+* ❤️‍🔥 Option to auto-download the top result
+* ❤️‍🔥 GUI version (Tkinter or Electron)
 
 ---
 
@@ -89,4 +89,4 @@ This tool is intended for **educational purposes** only. Please ensure that you 
 
 ## 🧑‍💻 Author
 
-**Ranbir**
+**Ranbir💖🍀**
