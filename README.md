@@ -1,6 +1,6 @@
 # 📚 lib2ran – Library Genesis Book Downloader
 
-**lib2ran** is a  Python CLI tool I made from ChatGPT ( functionalities:: almost everything in the main code is copied and pasted from chatGPT ) -
+**lib2ran** is a  Python CLI tool I made from ChatGPT ( This project was initially generated with the help of ChatGPT) -
 and currently enhancing and adding new functions of my own through learning,
 This tool offers both **interactive** and **direct command-line** modes for maximum flexibility.
 The website I am scraping books from [Library Genesis (libgen.rs)](https://libgen.rs).
