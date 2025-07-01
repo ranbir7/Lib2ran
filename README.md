@@ -1,18 +1,24 @@
-# 📚 lib2ran – Library Genesis Book Downloader
+# lib2ran – Library Genesis Book Downloader
 
-**lib2ran** is a  Python CLI tool I made from ChatGPT ( This project was initially generated with the help of ChatGPT) -
-and currently enhancing and adding new functions of my own through learning,
-This tool offers both **interactive** and **direct command-line** modes for maximum flexibility.
-The website I am scraping books from [Library Genesis (libgen.rs)](https://libgen.rs).
+**lib2ran** is a modern Python CLI tool to search and download books from [Library Genesis (libgen.rs)](https://libgen.rs).
+
+- Clean, professional, and attractive terminal interface
+- Uses the [rich](https://github.com/Textualize/rich) library for beautiful output (color, tables, progress bars)
+- No big ASCII art or distracting banners—just a slim, elegant accent header
+- Both **interactive** and **direct command-line** modes for maximum flexibility
 
 ---
 
 ## ✨ Features
 
-* 🔍 Search for books by title on LibGen
-* 📥 Choose from top 25 results and download the desired book
-* ⚙️ Works on Windows, Linux, and macOS
-* 🎛 Supports CLI arguments for scripting/automation
+* Search for books by title on LibGen
+* Choose from top results and download the desired book
+* Modern, readable tables and prompts
+* Download progress bar and search spinner
+* Works on Windows, Linux, and macOS
+* Supports CLI arguments for scripting/automation
+* `--about` and `--version` for info
+* `--auto` to instantly download the top result
 
 ---
 
@@ -26,13 +32,13 @@ cd lib2ran
 pip install -e .
 ```
 
-> ✅ This will install the `lib2ran` CLI globally on your system.
+> This will install the `lib2ran` CLI globally on your system.
 
 ---
 
 ## 🚀 Usage
 
-### 🟢 Interactive Mode
+### Interactive Mode
 
 Run the tool and follow the prompts:
 
@@ -40,7 +46,7 @@ Run the tool and follow the prompts:
 lib2ran
 ```
 
-### 🔵 Command-Line Mode
+### Command-Line Mode
 
 Download a book directly using a search term:
 
@@ -48,16 +54,22 @@ Download a book directly using a search term:
 lib2ran -b "The Art of Computer Programming"
 ```
 
+### Additional Options
+
+- Show about info: `lib2ran --about`
+- Show version: `lib2ran --version`
+- Auto-download top result: `lib2ran -b "Book Title" --auto`
+
 ---
 
 ## 🛠 Requirements
 
 * Python 3.7+
 * Dependencies (automatically installed):
-
   * `libgen-api`
   * `inquirer`
   * `requests`
+  * `rich`
 
 ---
 
@@ -75,9 +87,9 @@ README.md           # This file that you are viewing!
 
 ## 🧠 Future Plans
 
-* ❤️‍🔥 Add page navigation in terminal!
-* ❤️‍🔥 Option to auto-download the top result
-* ❤️‍🔥 GUI version (Tkinter or Electron)
+* Add page navigation in terminal
+* Option to auto-download the top result
+* GUI version (Tkinter or Electron)
 
 ---
 
@@ -89,4 +101,4 @@ This tool is intended for **educational purposes** only. Please ensure that you 
 
 ## 🧑‍💻 Author
 
-**Ranbir💖🍀**
+**Ranbir**

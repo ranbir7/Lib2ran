@@ -9,7 +9,8 @@ setup(
     install_requires=[
         "libgen-api",
         "inquirer",
-        "requests"
+        "requests",
+        "rich"
     ],
     entry_points={
         "console_scripts": [

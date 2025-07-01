@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: lib2ran
+Version: 1.0.0
+Summary: Library Genesis Book Downloader by Ran7
+Author: Ranbir
+Requires-Python: >=3.7
+Requires-Dist: libgen-api
+Requires-Dist: inquirer
+Requires-Dist: requests
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
