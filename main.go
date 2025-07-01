@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"lib2ran/internal"
 	"os"
@@ -11,46 +10,52 @@ import (
 
 func main() {
 	internal.ShowWelcome()
-	reader := bufio.NewReader(os.Stdin)
 	for {
 		query := internal.GetUserQuery()
-		results := internal.SearchLibgen(query)
-		if len(results) == 0 {
-			internal.ShowError("No results found.")
+		if query == "" {
+			internal.ShowError("Search query cannot be empty.")
 			continue
 		}
-		internal.ShowResultsTable(results)
+		var books []internal.Book
+		internal.ShowSpinner("Searching for books...", func() {
+			books = internal.SearchLibgen(query)
+		})
+		if len(books) == 0 {
+			internal.ShowError("No results found. Try another search.")
+			continue
+		}
+		internal.ShowResultsTable(books)
 		for {
-			selected := internal.PromptSelectResult(results)
-			if selected == nil {
+			book := internal.PromptSelectResult(books)
+			if book == nil {
 				internal.ShowError("No book selected.")
-				break
-			}
-			internal.ShowInfo(fmt.Sprintf("Downloading: %s", selected.Title))
-			downloadsDir, _ := os.UserHomeDir()
-			downloadsDir = filepath.Join(downloadsDir, "Downloads")
-			err := internal.DownloadBook(selected, downloadsDir)
-			if err != nil {
-				internal.ShowError(fmt.Sprintf("Download failed: %v", err))
-			} else {
-				internal.ShowSuccess(fmt.Sprintf("Downloaded to %s", downloadsDir))
-			}
-			fmt.Println()
-			fmt.Print("Do you want to download another file from the same results? (y/n): ")
-			answer, _ := reader.ReadString('\n')
-			answer = strings.TrimSpace(strings.ToLower(answer))
-			if answer == "y" || answer == "yes" {
-				internal.ShowResultsTable(results)
 				continue
 			}
-			fmt.Print("Do you want to search for new books? (y/n): ")
-			newSearch, _ := reader.ReadString('\n')
-			newSearch = strings.TrimSpace(strings.ToLower(newSearch))
-			if newSearch == "y" || newSearch == "yes" {
-				break // break inner loop, start new search
+			internal.ShowSpinner("Downloading...", func() {
+				downloadsDir, _ := os.UserHomeDir()
+				downloadsDir = filepath.Join(downloadsDir, "Downloads")
+				err := internal.DownloadBook(book, downloadsDir)
+				if err != nil {
+					internal.ShowError("Download failed: " + err.Error())
+				} else {
+					internal.ShowSuccess("Download complete! Saved to your Downloads folder.")
+				}
+			})
+			internal.ShowInfo("Would you like to download another book from these results? (y/n)")
+			var again string
+			fmt.Print("Your choice: ")
+			fmt.Scanln(&again)
+			if strings.ToLower(strings.TrimSpace(again)) != "y" {
+				break
 			}
-			internal.ShowInfo("Thank you for using Lib2ran! Have a premium day!")
-			return
+		}
+		internal.ShowInfo("Would you like to start a new search? (y/n)")
+		var newsearch string
+		fmt.Print("Your choice: ")
+		fmt.Scanln(&newsearch)
+		if strings.ToLower(strings.TrimSpace(newsearch)) != "y" {
+			break
 		}
 	}
+	internal.ShowGoodbye()
 }
